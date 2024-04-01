@@ -39,3 +39,13 @@ button img {
   font-weight: bold;
   margin-top: 20px;
 }
+
+#play-again {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: yellow;
+  color: blue;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
