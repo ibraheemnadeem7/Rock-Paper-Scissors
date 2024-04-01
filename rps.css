@@ -30,7 +30,6 @@ button {
 button img {
   width: 100px;
   height: 100px;
-  filter: brightness(8);
 }
 
 #result {
