@@ -9,6 +9,9 @@ PutHTML:
 	cp rps.html /var/www/html/RPS/
 	cp rps.css /var/www/html/RPS/
 	cp rps.js /var/www/html/RPS/
+	cp rock.png /var/www/html/RPS/
+	cp paper.png /var/www/html/RPS/
+	cp scissor.png /var/www/html/RPS/
 
 	echo "Current contents of your HTML directory: "
 	ls -l /var/www/html/RPS/
