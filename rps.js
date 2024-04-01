@@ -1,15 +1,19 @@
 const buttons = document.querySelectorAll('.choices button');
 const result = document.getElementById('result');
+const playAgainButton = document.getElementById('play-again');
 
 buttons.forEach(button => {
   button.addEventListener('click', playGame);
 });
+
+playAgainButton.addEventListener('click', resetGame);
 
 function playGame(e) {
   const playerSelection = e.target.id;
   const computerSelection = computerPlay();
   const winner = determineWinner(playerSelection, computerSelection);
   displayResult(winner, computerSelection);
+  playAgainButton.style.display = 'inline-block';
 }
 
 function computerPlay() {
@@ -31,4 +35,9 @@ function determineWinner(player, computer) {
 
 function displayResult(winner, computerChoice) {
   result.textContent = `${winner} Computer chose ${computerChoice}.`;
+}
+
+function resetGame() {
+  result.textContent = '';
+  playAgainButton.style.display = 'none';
 }
