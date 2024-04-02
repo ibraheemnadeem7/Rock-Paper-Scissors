@@ -1,18 +1,20 @@
-const buttons = document.querySelectorAll('.choices button');
+// Selecting buttons individually instead of through .choices class
+const rockButton = document.getElementById('rock');
+const paperButton = document.getElementById('paper');
+const scissorsButton = document.getElementById('scissors');
 const result = document.getElementById('result');
 const playAgainButton = document.getElementById('play-again');
 
-buttons.forEach(button => {
-  button.addEventListener('click', playGame);
-});
-
+// Adding event listeners to each button
+rockButton.addEventListener('click', () => playGame('rock'));
+paperButton.addEventListener('click', () => playGame('paper'));
+scissorsButton.addEventListener('click', () => playGame('scissors'));
 playAgainButton.addEventListener('click', resetGame);
 
-function playGame(e) {
-  const playerSelection = e.target.id;
+function playGame(playerSelection) {
   const computerSelection = computerPlay();
   const winner = determineWinner(playerSelection, computerSelection);
-  displayResult(winner, computerSelection);
+  displayResult(winner, playerSelection, computerSelection);
   playAgainButton.style.display = 'inline-block';
 }
 
@@ -33,11 +35,18 @@ function determineWinner(player, computer) {
   }
 }
 
-function displayResult(winner, computerChoice) {
-  result.textContent = `${winner} Computer chose ${computerChoice}.`;
+function displayResult(winner, playerChoice, computerChoice) {
+  if (winner === 'It\'s a tie!') {
+    result.textContent = `It's a tie! You both chose ${playerChoice}.`;
+  } else if (winner === 'You win!') {
+    result.textContent = `You win! You chose ${playerChoice}, computer chose ${computerChoice}.`;
+  } else {
+    result.textContent = `Computer wins! You chose ${playerChoice}, computer chose ${computerChoice}.`;
+  }
 }
 
 function resetGame() {
   result.textContent = '';
   playAgainButton.style.display = 'none';
 }
+
